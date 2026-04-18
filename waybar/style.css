@@ -1,0 +1,95 @@
+* {
+    font-family: "BlexMono Nerd Font", monospace;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+}
+
+window#waybar {
+    background: rgba(20, 20, 20, 0.85);
+    color: #cdd6f4;
+}
+
+#workspaces {
+    margin-left: 8px;
+}
+
+#workspaces button {
+    margin: 6px 4px;
+    padding: 0;
+    font-size: 12px;
+    color: #585b70;
+    background: transparent;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: #a6adc8;
+}
+
+#workspaces button.occupied {
+    color: #6c7086;
+}
+
+#workspaces button.active {
+    color: #cdd6f4;
+    font-size: 14px;
+}
+
+#clock {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #f5c2e7;
+}
+
+#network,
+#pulseaudio,
+#battery,
+#backlight {
+    padding: 0 10px;
+    margin: 0 4px;
+}
+
+#network {
+    color: #89b4fa;
+}
+
+#pulseaudio {
+    color: #74c7ec;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical,
+#battery.0,
+#battery.1 {
+    color: #f38ba8;
+}
+
+#battery.2,
+#battery.3,
+#battery.4 {
+    color: #a6e3a1;
+}
+
+#backlight {
+    color: #fab387;
+}
+
+#tray {
+    padding: 0 8px;
+}
+
+tooltip {
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 8px;
+    padding: 6px;
+    color: #cdd6f4;
+}
