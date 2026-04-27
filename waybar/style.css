@@ -1,95 +1,205 @@
+/* ============================================
+   Waybar Style Configuration
+   Classic Bar Design for Hyprland
+   Font: FiraCode Nerd Font
+   ============================================ */
+
 * {
-    font-family: "BlexMono Nerd Font", monospace;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
+  border: none;
+  border-radius: 0;
+  font-family: "FiraCode Nerd Font", "Fira Code", monospace;
+  font-size: 14px;
+  min-height: 0;
 }
+
+/* ============================================
+   Window Background
+   ============================================ */
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.85);
-    color: #cdd6f4;
+  background: rgba(30, 30, 46, 0.85);
+  color: #cdd6f4;
 }
 
+/* ============================================
+   Module Base Style - Classic spacing
+   ============================================ */
+
+#custom-debian,
+#workspaces,
+#group-connectivity,
+#group-media,
+#custom-cpu_temp,
+#custom-music,
+#clock,
+#tray,
+#custom-power,
+#custom-colorschemas {
+  color: #cdd6f4;
+  padding: 0 8px;
+}
+
+#group-connectivity > * {
+  padding: 0 12px;
+}
+
+#group-media > * {
+  padding: 0 6px;
+}
+
+/* ============================================
+   Left Section
+   ============================================ */
+
+#custom-debian {
+  color: #f38ba8;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+/* ============================================
+   Center - Workspaces - Dots
+   ============================================ */
+
 #workspaces {
-    margin-left: 8px;
+  padding: 0;
+  font-size: 32px;
 }
 
 #workspaces button {
-    margin: 6px 4px;
-    padding: 0;
-    font-size: 12px;
-    color: #585b70;
-    background: transparent;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-}
-
-#workspaces button:hover {
-    color: #a6adc8;
-}
-
-#workspaces button.occupied {
-    color: #6c7086;
+  color: #45475a;
+  margin: 0;
+  transition: all 0.2s ease;
 }
 
 #workspaces button.active {
-    color: #cdd6f4;
-    font-size: 14px;
+  color: #89b4fa;
 }
 
-#clock {
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #f5c2e7;
+#workspaces button.urgent {
+  color: #f38ba8;
 }
 
-#network,
-#pulseaudio,
-#battery,
-#backlight {
-    padding: 0 10px;
-    margin: 0 4px;
+#workspaces button.default {
+  color: #a6e3a1;
 }
 
-#network {
-    color: #89b4fa;
+#workspaces button:hover {
+  color: #cdd6f4;
+}
+
+/* ============================================
+   Right Section Modules
+   ============================================ */
+
+#group-connectivity #network {
+  color: #f9e2af;
+}
+
+#group-connectivity #network.disconnected {
+  color: #f38ba8;
+}
+
+#group-connectivity #bluetooth {
+  color: #89b4fa;
+}
+
+#group-connectivity #bluetooth.disabled {
+  color: #6c7086;
+}
+
+#group-connectivity #battery {
+  color: #a6e3a1;
+}
+
+#group-connectivity #battery.charging {
+  color: #f9e2af;
+}
+
+#group-connectivity #battery.plugged {
+  color: #f9e2af;
+}
+
+#group-connectivity #battery.full {
+  color: #a6e3a1;
+}
+
+#group-connectivity #battery.warning {
+  color: #f38ba8;
+}
+
+#group-connectivity #battery.critical {
+  color: #f38ba8;
+  font-weight: bold;
 }
 
 #pulseaudio {
-    color: #74c7ec;
+  color: #f5c2e7;
 }
 
-#battery {
-    color: #a6e3a1;
+#pulseaudio.muted {
+  color: #6c7086;
 }
 
-#battery.warning {
-    color: #f9e2af;
+#custom-backlight {
+  color: #fab387;
 }
 
-#battery.critical,
-#battery.0,
-#battery.1 {
-    color: #f38ba8;
+#custom-cpu_temp {
+  color: #fab387;
+  padding: 0 8px;
 }
 
-#battery.2,
-#battery.3,
-#battery.4 {
-    color: #a6e3a1;
+#custom-music {
+  color: #a6e3a1;
+  transition: all 0.2s ease;
 }
 
-#backlight {
-    color: #fab387;
+#custom-music:hover {
+  background: rgba(166, 227, 161, 0.15);
+  border-radius: 4px;
 }
 
-#tray {
-    padding: 0 8px;
+#clock {
+  color: #cba6f7;
+  font-weight: bold;
 }
 
-tooltip {
-    background: rgba(30, 30, 30, 0.95);
-    border-radius: 8px;
-    padding: 6px;
-    color: #cdd6f4;
+/* ============================================
+   System Tray
+   ============================================ */
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* ============================================
+   Power Button
+   ============================================ */
+
+#custom-power {
+  color: #f38ba8;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+#custom-power:hover {
+  color: #f5c2e7;
+}
+
+/* ============================================
+   Color Schemes Button
+   ============================================ */
+
+#custom-colorschemas {
+  color: #f5c2e7;
+  transition: all 0.2s ease;
+}
+
+#custom-colorschemas:hover {
+  color: #f38ba8;
 }

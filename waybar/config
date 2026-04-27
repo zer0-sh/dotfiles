@@ -1,66 +1,185 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 36,
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+  "margin-top": 8,
+  "margin-left": 8,
+  "margin-right": 8,
+  "modules-left": [
+    "custom/debian",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "group/connectivity",
+    "group/media",
+    "custom/music",
+    "custom/cpu_temp",
+    "tray",
+    "custom/colorschemes",
+    "custom/power"
+  ],
 
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "battery", "backlight", "tray"],
+  "modules-center": [
+    "clock"
+  ],
 
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "persistent-workspaces": {
-            "1": [], "2": [], "3": [], "4": [], "5": [],
-            "6": [], "7": [], "8": [], "9": [], "10": []
-        },
-        "format-icons": {
-            "1": "●",
-            "2": "●",
-            "3": "●",
-            "4": "●",
-            "5": "●",
-            "6": "●",
-            "7": "●",
-            "8": "●",
-            "9": "●",
-            "10": "●"
-        }
+  "custom/debian": {
+    "format": " 󰣚  {}",
+    "exec": "~/.config/waybar/scripts/focused_app.sh",
+    "interval": 1,
+    "return-type": "text",
+    "tooltip": false
+  },
+
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth",
+      "battery"
+    ]
+  },
+
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "custom/backlight"
+    ]
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "●",
+      "default": "○",
+      "urgent": "●"
     },
-
-    "clock": {
-        "format": "{:%H:%M}",
-        "tooltip-format": "%A, %B %d, %Y"
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 5
     },
+    "separate-outputs": true
+  },
 
-    "network": {
-        "format-wifi": "󰤨 {essid} {signalStrength}%",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭"
+  "network": {
+    "format-wifi": " 󰤨 {signalStrength}%",
+    "format-ethernet": " 󰈀",
+    "format-disconnected": " 󰤭",
+    "tooltip": true,
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+
+  "bluetooth": {
+    "format": " 󰂯",
+    "format-connected": " 󰂱",
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "tooltip": true
+  },
+
+  "battery": {
+    "format": " 󰂁 {capacity}%",
+    "format-charging": " 󰂄 {capacity}%",
+    "format-plugged": " 󰂄 {capacity}%",
+    "format-full": " 󰁹",
+    "format-warning": " 󰂃 {capacity}%",
+    "states": {
+      "warning": 20,
+      "critical": 10
     },
+    "interval": 30
+  },
 
-    "pulseaudio": {
-        "format": "󰝝 {volume}%",
-        "format-muted": "󰝝 0%",
-        "on-click": "pavucontrol"
+  "pulseaudio": {
+    "format": " 󰕾 {volume}%",
+    "format-muted": " 󰖁",
+    "format-icons": {
+      "headphone": " 󰋋 ",
+      "hands-free": " 󰂎 ",
+      "headset": " 󰂎 ",
+      "phone": " 󰏲 ",
+      "portable": " 󰏲 ",
+      "car": " 󰄋 ",
+      "default": [" 󰕿 ", " 󰖀 ", " 󰕾 "]
     },
+    "on-click": "pavucontrol",
+    "scroll-step": 5,
+    "tooltip": true
+  },
 
-    "battery": {
-        "format": "󰁹 {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "states": {
-            "warning": 30,
-            "critical": 15
-        }
-    },
+  "custom/backlight": {
+    "format": " 󰃠 {}%",
+    "exec": "~/.config/waybar/scripts/backlight.sh",
+    "interval": 5,
+    "on-click": "~/.config/waybar/scripts/backlight-up.sh",
+    "on-click-right": "~/.config/waybar/scripts/backlight-down.sh",
+    "scroll-step": 5,
+    "tooltip": true
+  },
 
-    "backlight": {
-        "format": "󰛨 {percent}%"
-    },
+  "custom/cpu_temp": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/cpu_temp.sh",
+    "interval": 5,
+    "on-click": "~/.config/waybar/scripts/cpu_toggle.sh",
+    "tooltip": true,
+    "return-type": "text"
+  },
 
-    "tray": {
-        "spacing": 8
+  "custom/music": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/music.sh",
+    "interval": 5,
+    "return-type": "text",
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%a %d %b | %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "toggle",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'>{}</span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     }
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8,
+    "show-passive-status": true
+  },
+
+  "custom/power": {
+    "format": " 󰐥",
+    "tooltip": true,
+    "tooltip-format": "Right-click to open power menu",
+    "on-click-right": "waybar-power-menu"
+  },
+
+  "custom/colorschemes": {
+    "format": " 󰏓",
+    "tooltip": true,
+    "tooltip-format": "Right-click to select color scheme",
+    "on-click-right": "waybar-colorscheme-picker"
+  }
 }
