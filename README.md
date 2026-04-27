@@ -17,8 +17,10 @@ Updated on: 2026-04-18
 ```
 dotfiles/
 ├── bat/                 → bat configuration
+├── dunst/               → Notification daemon (dunstrc)
 ├── hypr/                → Hyprland config (modular)
 ├── kitty/              → Terminal config
+├── waybar/              → Status bar (modular with scripts)
 ├── zsh/                → Shell aliases
 ├── sync-to-dotfiles.sh
 ├── sync-from-dotfiles.sh
@@ -29,6 +31,8 @@ dotfiles/
 
 - Hyprland
 - Kitty
+- Waybar
+- Dunst
 - bat (or batcat on Debian)
 - lsd
 - swaybg
@@ -43,6 +47,8 @@ git clone https://github.com/youruser/dotfiles.git ~/dotfiles
 # Copy
 cp -r ~/dotfiles/hypr ~/.config/
 cp ~/dotfiles/kitty/kitty.conf ~/.config/kitty/
+cp ~/dotfiles/waybar ~/.config/
+cp ~/dotfiles/dunst/dunstrc ~/.config/dunst/
 cp ~/dotfiles/zsh/.zshrc_aliases ~/
 cp ~/dotfiles/bat/config ~/.config/bat/
 ```
@@ -64,6 +70,18 @@ Source aliases from `.zshrc`:
 ```bash
 [ -f ~/.zshrc_aliases ] && source ~/.zshrc_aliases
 ```
+
+## Components
+
+### Waybar
+Modular status bar with custom scripts for workspaces, system info, and controls.
+
+![Waybar](./docs/img/waybar.png)
+
+### Dunst
+Minimal notification daemon with custom styling and urgency levels.
+
+![Dunst](./docs/img/dunstrc.png)
 
 ## Keybindings
 
