@@ -1,0 +1,21 @@
+# AI Tools
+.gemini/
+.continue/
+.claude/
+*.log
+session_history/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# General temporary files
+tmp/
+dist/
+build/
